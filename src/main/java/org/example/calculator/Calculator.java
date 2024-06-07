@@ -76,4 +76,29 @@ public class Calculator extends Application {
             default -> 0;
         };
     }
+
+    private void handleButtonClick(String text) {
+
+        if ("0123456789.".contains(text)) {
+            if (newNum) {
+                display.setText(text);
+                newNum = false;
+            } else {
+                display.appendText(text);
+            }
+        } else if ("/*-+".contains(text)) {
+            firstNum = Double.parseDouble(display.getText());
+            operator = text;
+            newNum = true;
+        } else if ("=".equals(text)) {
+            double secondOperand = Double.parseDouble(display.getText());
+            double result = calculate(firstNum, secondOperand, operator);
+            display.setText(String.valueOf(result));
+            newNum = true;
+        } else if ("AC".equals(text)) {
+            handleClear();
+        }
+
+
+    }
 }
