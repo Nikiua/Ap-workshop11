@@ -101,4 +101,19 @@ public class Calculator extends Application {
 
 
     }
+
+    private void handleKeyPress(KeyEvent event) {
+        String keyText = event.getText();
+        if ("0123456789.".contains(keyText)) {
+            handleButtonClick(keyText);
+        } else {
+            switch (event.getCode()) {
+                case ADD -> handleButtonClick("+");
+                case SUBTRACT -> handleButtonClick("-");
+                case MULTIPLY -> handleButtonClick("*");
+                case DIVIDE -> handleButtonClick("/");
+                case ENTER -> handleButtonClick("=");
+            }
+        }
+    }
 }
