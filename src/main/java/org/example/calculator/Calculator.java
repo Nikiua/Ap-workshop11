@@ -60,7 +60,20 @@ public class Calculator extends Application {
         Scene scene = new Scene(gridPane, 300, 350);
         gridPane.add(display, 0, 0, 3, 1);
 
+        scene.addEventFilter(KeyEvent.KEY_PRESSED, this::handleKeyPress);
 
+        stage.setScene(scene);
+        stage.setTitle("Calculator");
+        stage.show();
     }
 
+    private double calculate(double firstNumber, double secondNumber, String operator) {
+        return switch (operator) {
+            case "+" -> firstNumber + secondNumber;
+            case "-" -> firstNumber - secondNumber;
+            case "*" -> firstNumber * secondNumber;
+            case "/" -> firstNumber / secondNumber;
+            default -> 0;
+        };
+    }
 }
