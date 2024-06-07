@@ -4,6 +4,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
@@ -38,6 +39,25 @@ public class Calculator extends Application {
                 "1", "2", "3", "-",
                 "0", ".", "=", "+"
         };
+
+        int row = 1;
+        int col = 0;
+
+        for (String text : buttons) {
+            Button button = new Button(text);
+            button.setPrefSize(100, 80);
+            button.setOnAction(e -> handleButtonClick(text));
+            if (text.equals("AC")) {
+                gridPane.add(button, 3, 0);
+                continue;
+            }
+            gridPane.add(button, col, row);
+            col++;
+            if (col > 3) {
+                col = 0;
+                row++;
+            }
+        }
     }
 
 }
