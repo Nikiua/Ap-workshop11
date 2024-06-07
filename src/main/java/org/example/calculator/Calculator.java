@@ -6,6 +6,7 @@ import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
@@ -26,12 +27,10 @@ public class Calculator extends Application {
         display = new TextField();
         display.setPrefSize(300, 80);
         display.setEditable(false);
-
         GridPane gridPane = new GridPane();
         gridPane.setPadding(new Insets(10));
         gridPane.setHgap(10);
         gridPane.setVgap(10);
-
         String[] buttons = {
                 "AC",
                 "7", "8", "9", "/",
@@ -58,6 +57,10 @@ public class Calculator extends Application {
                 row++;
             }
         }
+        Scene scene = new Scene(gridPane, 300, 350);
+        gridPane.add(display, 0, 0, 3, 1);
+
+
     }
 
 }
