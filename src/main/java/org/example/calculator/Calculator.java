@@ -116,4 +116,12 @@ public class Calculator extends Application {
             }
         }
     }
+
+    private void handleClear() {
+        display.clear();
+        firstNum = 0;
+        operator = "";
+        newNum = true;
+    }
+
 }
